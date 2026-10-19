@@ -8,8 +8,8 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 "Segoe UI",system-ui,Arial,sans-serif}
-header{background:var(--ac);color:#fff;padding:12px 16px}header b{font-size:1.05rem}header small{display:block;opacity:.9}
-main{max-width:780px;margin:0 auto;padding:14px}
+header{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--h1),var(--h2) 55%,var(--h3));color:#fff;padding:24px 18px 22px;text-align:center}header::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='100'%3E%3Cg fill='white' fill-opacity='.22' font-family='monospace' font-size='28' font-weight='bold'%3E%3Ctext x='8' y='42'%3E{ }%3C/text%3E%3Ctext x='88' y='82'%3Edef%3C/text%3E%3Ctext x='170' y='38'%3E( )%3C/text%3E%3Ctext x='238' y='80'%3E1010%3C/text%3E%3Ctext x='318' y='40'%3E[ ]%3C/text%3E%3C/g%3E%3C/svg%3E") 0 0/380px 100px repeat}header b,header small{position:relative;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.25)}header b{font-size:1.4rem}.hi{display:block;margin:0 auto 6px;position:relative;z-index:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}header small{display:block;opacity:.9}
+main{max-width:780px;margin:12px auto;padding:14px;border-radius:24px;border:1px solid var(--bd);background:radial-gradient(var(--dot) 1.4px,transparent 1.5px) 0 0/22px 22px,linear-gradient(180deg,var(--m1),var(--m2))}@media (max-width:800px){main{border-radius:0;border-left:0;border-right:0;margin-top:8px}}
 nav{display:flex;gap:6px;overflow-x:auto;padding:10px 14px;max-width:780px;margin:0 auto}
 nav button{flex:none;font-size:.9rem;padding:8px 12px;min-height:44px}
 nav button.cur{background:var(--ac);color:#fff}
@@ -34,12 +34,14 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border:1px solid
 .st{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:4px 12px;font-size:.85rem;z-index:5}
 footer{text-align:center;color:var(--mu);font-size:.85rem;padding:20px}
 .opt{display:block;width:100%;text-align:left}
+:root{--h1:#0d47a1;--h2:#1976d2;--h3:#4fc3f7;--m1:#f5faff;--m2:#d9eafb;--dot:rgba(21,101,192,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--h1:#0b2545;--h2:#123e7c;--h3:#1b6ca8;--m1:#13253b;--m2:#0e1b2d;--dot:rgba(96,165,250,.16)}}
 </style></head><body>
-<header><b>Multimedia Pembelajaran Interaktif</b><small>Informatika · Kelas IX · Pemrograman Modular pada Python</small></header>
+<header><svg class="hi" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="52" height="34" rx="4" fill="rgba(255,255,255,.18)"/><path d="M24 54h16M32 43v11"/><path d="M21 21l-6 6 6 6M43 21l6 6-6 6M35 18l-6 18"/></svg><b>Multimedia Pembelajaran Interaktif</b><small>Informatika · Kelas IX · Pemrograman Modular pada Python</small></header>
 <nav id="nav"></nav><div class="pg"><i id="pgb" style="width:0"></i></div>
 <main id="app"></main>
 <div class="st" id="st" hidden></div>
-<footer>Dibuat oleh: Hdr Munda · Guru Informatika</footer>
+<footer>Dibuat oleh: Hdr Munda · Guru Informatika-SPAIFA</footer>
 <script>
 const G={guru:"Hdr Munda",mapel:"Informatika",kelas:"IX",materi:"Pemrograman Modular pada Python (Literasi dan Numerasi)"};
 const TJ="Menerapkan prinsip pemrograman modular dengan membuat fungsi atau prosedur dalam program.";
@@ -61,7 +63,7 @@ function go(i){S.menu=i;if(i<9)S.max=Math.max(S.max,i);nav();render();scrollTo(0
 function render(){[M1,M2,M3,M4,M5][S.menu]?[M1,M2,M3,M4,M5][S.menu]():rekap()}
 // ---------- Menu 1 ----------
 function M1(){if(S.nama)return($("app").innerHTML=`<div class="card"><h1>Selamat belajar, ${E(S.nama)}! 🎉</h1><p>Kelas ${E(S.kelas)}. Silakan lanjut ke tujuan pembelajaran.</p><button class="p" onclick="go(1)">Lanjut ➜</button></div>`);
-$("app").innerHTML=`<div class="card"><h1>🍛 Misi Kantin Digital</h1><p><b>${G.mapel}</b> · ${G.materi}</p><p>Pembuat MPI: <b>${G.guru}</b></p>
+$("app").innerHTML=`<div class="card"><h1>💻🍛 Misi Kantin Digital</h1><p><b>${G.mapel}</b> · ${G.materi}</p><p>Pembuat MPI: <b>${G.guru}</b></p>
 <label>Nama lengkap</label><input type="text" id="nm" autocomplete="off"><label>Kelas</label><input type="text" id="kl" placeholder="contoh: IX-A">
 <div class="fb no" id="er"></div><button class="p" id="mb">Mulai Belajar</button>
 <div class="info">Nama dan kelas hanya untuk mengenali sesi belajar, bukan akun berkata sandi. ${DB?"":"Catatan: penyimpanan ke database belum aktif pada tampilan ini; hasil tetap bisa diunduh sebagai CSV."}</div></div>`;
@@ -139,7 +141,7 @@ function result(){const a=S.att[S.att.length-1];
 $("app").innerHTML=`<div class="card"><h2>Hasil Latihan (percobaan ${a.no})</h2><div class="vars"><div class="box"><small>Nilai</small><b style="font-size:1.6rem">${a.nilai}</b></div><div class="box"><small>Benar</small><b>${a.benar}</b></div><div class="box"><small>Salah</small><b>${a.salah}</b></div></div>
 <p>${a.nilai>=80?"Hebat! Pemahamanmu sudah kuat.":a.nilai>=60?"Bagus, pelajari lagi bagian yang salah.":"Ayo ulangi materinya, lalu coba lagi."}</p>
 <h3>Pembahasan</h3>${Q.map((q,i)=>{const ok=a.jawaban[i]===q[2];return`<div class="info"><b>${i+1}. ${ok?"✅":"❌"}</b> ${E(q[0])}<br>Jawabanmu: ${E(q[1][a.jawaban[i]])}${ok?"":`<br>Jawaban benar: <b>${E(q[1][q[2]])}</b>`}<br><i>${E(q[3])}</i></div>`}).join("")}
-<button onclick="S.sub=false;S.ans=[];M4()">🔁 Coba Lagi</button><button class="p" onclick="go(4)">Lanjut ke Refleksi ➜</button> <button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button></div>`}
+<button onclick="S.sub=false;S.ans=[];M4()">🔁 Coba Lagi</button><button class="p" onclick="go(4)">Lanjut ke Refleksi ➜</button> <button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button><h3>Kirim ke Google Form</h3><small>Disarankan dikirim setelah mengisi refleksi agar datanya lengkap.</small><br>${gfLink()}</div>`}
 // ---------- Menu 5 ----------
 function M5(){if(S.ref&&S.ref.ok)return thanks();
 const rd=(n,o)=>o.map(x=>`<label style="display:block;margin:4px 0"><input type="radio" name="${n}" value="${x}"> ${x}</label>`).join("");
@@ -149,7 +151,13 @@ $("app").innerHTML=`<div class="card"><h2>📝 Refleksi Pembelajaran</h2><h3>1. 
 $("kr").onclick=async()=>{if(S.busy)return;const p=document.querySelector("input[name=p]:checked"),u=document.querySelector("input[name=u]:checked");if(!p||!u){$("er").textContent="Jawab pertanyaan 1 dan 2 dulu.";return}
 S.busy=true;$("kr").disabled=true;S.ref={perasaan:p.value,paham:u.value,menarik:$("t1").value.trim(),sulit:$("t2").value.trim(),lanjut:$("t3").value.trim(),waktu:new Date().toISOString(),ok:false};
 const ok=await save();S.busy=false;if(ok){S.ref.ok=true;thanks()}else{S.ref.ok=false;$("kr").disabled=false;$("er").innerHTML="Data belum tersimpan. "+(DB?"Klik Kirim Refleksi lagi untuk mengirim ulang.":"Penyimpanan tidak aktif; unduh CSV di bawah dan kirim ke gurumu.")+` <button onclick="csvSiswa()">⬇ Unduh CSV</button>`}}}
-function thanks(){const b=Math.max(0,...S.att.map(a=>a.nilai));$("app").innerHTML=`<div class="card"><h1>Terima kasih, ${E(S.nama)}! 🌟</h1><p>Ringkasan belajarmu:</p><ul><li>Submateri dipelajari: 4</li><li>Percobaan latihan: ${S.att.length}</li><li>Nilai terbaik: <b>${S.att.length?b:"-"}</b></li><li>Pemahaman: ${E(S.ref.paham)}</li></ul><button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button></div>`}
+function thanks(){const b=Math.max(0,...S.att.map(a=>a.nilai));$("app").innerHTML=`<div class="card"><h1>Terima kasih, ${E(S.nama)}! 🌟</h1><p>Ringkasan belajarmu:</p><ul><li>Submateri dipelajari: 4</li><li>Percobaan latihan: ${S.att.length}</li><li>Nilai terbaik: <b>${S.att.length?b:"-"}</b></li><li>Pemahaman: ${E(S.ref.paham)}</li></ul><button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button><h3>Langkah terakhir</h3>${gfLink()}</div>`}
+// ---------- Google Form (tautan terisi otomatis) ----------
+const GF="https://docs.google.com/forms/d/e/1FAIpQLSejOB3XySCipfvnBwEBWLtGDhTdoYgAs9GycqbBk3yMVt5tzw/viewform?usp=pp_url";
+const GE={sid:"440915706",nama:"331253029",kelas:"1952525687",no:"1321282497",benar:"527857178",salah:"1991541245",nilai:"2104812980",durasi:"1684091115",rasa:"808077791",paham:"1026007582",menarik:"850251142",sulit:"201949431",lanjut:"2111574082"};
+function gfLink(){const a=S.att[S.att.length-1]||{},r=S.ref||{},v={sid:S.sid,nama:S.nama,kelas:S.kelas,no:a.no,benar:a.benar,salah:a.salah,nilai:a.nilai,durasi:a.durasi,rasa:r.perasaan,paham:r.paham,menarik:r.menarik,sulit:r.sulit,lanjut:r.lanjut};
+const u=GF+Object.keys(GE).map(k=>"&entry."+GE[k]+"="+encodeURIComponent(v[k]==null?"":v[k])).join("");
+return `<a href="${u}" target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:12px;background:var(--ac);color:#fff;text-decoration:none;margin:3px">📤 Kirim ke Google Form</a><div class="fb" style="font-weight:400">Formulir akan terbuka dengan data terisi. <b>Tekan tombol Kirim di formulir</b> agar tercatat.</div>`}
 // ---------- CSV ----------
 const csvc=v=>'"'+String(v??"").replace(/"/g,'""')+'"',toCsv=r=>"\ufeff"+r.map(x=>x.map(csvc).join(",")).join("\r\n");
 async function dl(name,rows){if(!DL){alert("Unduhan tidak tersedia pada tampilan ini.");return}try{await DL.save({filename:name,data:toCsv(rows)})}catch(e){}}
